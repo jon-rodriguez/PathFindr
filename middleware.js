@@ -1,6 +1,6 @@
-const { campgroundSchema, reviewSchema } = require('./schemas.js');
+const { bikepathSchema, reviewSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
-const Campground = require('./models/campground');
+const Bikepath = require('./models/bikepath');
 const Review = require('./models/review');
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -12,8 +12,8 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-module.exports.validateCampground = (req, res, next) => {
-    const { error } = campgroundSchema.validate(req.body);
+module.exports.validateBikepath = (req, res, next) => {
+    const { error } = bikepathSchema.validate(req.body);
     console.log(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
@@ -25,10 +25,10 @@ module.exports.validateCampground = (req, res, next) => {
 
 module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
-    const campground = await Campground.findById(id);
-    if (!campground.author.equals(req.user._id)) {
+    const bikepath = await Bikepath.findById(id);
+    if (!bikepath.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+        return res.redirect(`/bikepaths/${id}`);
     }
     next();
 }
@@ -38,7 +38,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     const review = await Review.findById(reviewId);
     if (!review.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/campgrounds/${id}`);
+        return res.redirect(`/bikepaths/${id}`);
     }
     next();
 }

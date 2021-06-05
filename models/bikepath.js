@@ -16,7 +16,7 @@ ImageSchema.virtual('thumbnail').get(function () {
 
 const opts = { toJSON: { virtuals: true } };
 
-const CampgroundSchema = new Schema({
+const BikepathSchema = new Schema({
     title: String,
     images: [ImageSchema],
     geometry: {
@@ -30,7 +30,7 @@ const CampgroundSchema = new Schema({
             required: true
         }
     },
-    price: Number,
+    terrain: String,
     description: String,
     location: String,
     author: {
@@ -46,15 +46,15 @@ const CampgroundSchema = new Schema({
 }, opts);
 
 
-CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
+BikepathSchema.virtual('properties.popUpMarkup').get(function () {
     return `
-    <strong><a href="/campgrounds/${this._id}">${this.title}</a><strong>
+    <strong><a href="/bikepaths/${this._id}">${this.title}</a><strong>
     <p>${this.description.substring(0, 20)}...</p>`
 });
 
 
 
-CampgroundSchema.post('findOneAndDelete', async function (doc) {
+BikepathSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {
@@ -64,4 +64,4 @@ CampgroundSchema.post('findOneAndDelete', async function (doc) {
     }
 })
 
-module.exports = mongoose.model('Campground', CampgroundSchema);
+module.exports = mongoose.model('Bikepath', BikepathSchema);
