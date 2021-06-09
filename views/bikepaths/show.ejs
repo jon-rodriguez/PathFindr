@@ -6,7 +6,7 @@
                 <div class="carousel-inner">
                     <% bikepath.images.forEach((img, i)=> { %>
                         <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-                            <img src="<%= img.url%>" class="d-block w-100" alt="">
+                            <img src="<%= img.url%>" id="imgsize" class="d-block w-100" alt="">
                         </div>
                         <% }) %>
 
@@ -39,7 +39,7 @@
                     <li class="list-group-item">Submitted by <%= bikepath.author.username%>
                     </li>
                     <li class="list-group-item">
-                        <%= bikepath.terrain%>
+                        Terrain: <%= bikepath.terrain%>
                     </li>
                 </ul>
                 <% if( currentUser && bikepath.author.equals(currentUser._id)) {%>
@@ -50,9 +50,9 @@
                         </form>
                     </div>
                     <% } %>
-                        <div class="card-footer text-muted">
+                        <!-- <div class="card-footer text-muted">
                             2 days ago
-                        </div>
+                        </div> -->
             </div>
 
         </div>

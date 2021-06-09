@@ -40,3 +40,9 @@ module.exports.reviewSchema = Joi.object({
     }).required()
 })
 
+// moduel.exports.createddateSchema = Joi.Object({
+//   createddate: Joi.Object({
+//     type: Date,
+//     default: Date.now
+//   }).required()
+// })
