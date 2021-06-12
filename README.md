@@ -45,7 +45,7 @@ bcryptjs, cloudinary, connect-mongo, dotenv, ejs, express, express-session, expr
 ---
 
 # Things to add
-
+.env file with mongodb server, cloudinary api, mapbox and secret
  ---
  
  Have fun testing and improving it! 😎
