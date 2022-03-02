@@ -4,6 +4,8 @@ A social media/review app built using the MVC Architecture, I have also implemen
 
 link to working app: `https://pathfindr2021.herokuapp.com/`
 
+*Bootstrapped from colt's campgrounds project*
+
 ---
 
 > Be sure to add that lovely star 😀 and fork it for your own copy
